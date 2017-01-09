@@ -1,0 +1,28 @@
+<section data-ng-controller="ArticlesController" data-ng-init="findOne()"> <!-- puts one article in $scope -->
+    <h1 data-ng-bind="article.title"></h1>
+    <div data-ng-show="authentication.user._id == article.creator._id">
+        <a href="/#!/articles/{{article._id}}/edit">edit</a>
+        <a href="/#!/articles" data-ng-click="delete();">delete</a>
+    </div>
+    <small>
+        <em>Posted on</em>
+        <em data-ng-bind="article.created | date:'mediumDate'"></em>
+        <em>by</em>
+        <em data-ng-bind="article.creator.fullName"></em>
+    </small>
+    <p data-ng-bind="article.content"></p>
+    <br>
+    <div>
+        <div data-ng-show="authentication.user._id === article.creator._id">
+            <a href="/signout">Sign out</a>
+        </div>
+        <div data-ng-show="authentication.user._id !== article.creator._id">
+            <a href="/#!/">Home</a>
+        </div>
+    
+        <ul>
+            <li><a href="/#!/articles">List all articles</a></li>
+            <li><a href="/#!/articles/create">Create Article</a></li>
+        </ul>  
+    </div>
+</section>
