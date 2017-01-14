@@ -28,7 +28,7 @@ module.exports = function() {
             providerData : providerData
         };
         
-        profile.email = profile.emails ? profile.emails[0].value : "example@localhost.com";
+        providerUserProfile.email = profile.emails ? profile.emails[0].value : "example@localhost.com";
         
         console.log("in passport.use: providerUserProfile" + JSON.stringify(providerUserProfile))
         
