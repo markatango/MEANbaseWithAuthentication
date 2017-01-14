@@ -5,6 +5,7 @@ module.exports = function(){
     var db = mongoose.connect(config.db); // equiv:  var db = mongoose.connect('mongodb://localhost/mean-book');
     require('../app/models/user.server.model');    // returns mongoose.model('User', UserSchema);
     require('../app/models/article.server.model'); // returns mongoose.model('Article', ArticleSchema);
+    
     return db;
 };
 

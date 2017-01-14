@@ -2,6 +2,8 @@
 
 //configure the routes with the express module
 var config = require('./config'), // makes config variables visible through recursive search starting from config.js
+    http = require('http'),
+    socketio = require('socket.io'),
     express = require('express'), // this is the native express module
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
@@ -9,14 +11,18 @@ var config = require('./config'), // makes config variables visible through recu
     compress = require('compression'),
     console = require('express-console')(8000),
     session = require('express-session'),
+    MongoStore = require('connect-mongo')(session),
     bodyLogger = require('../app/custom_middleware/console.logger.mw.js'),
     flash = require('connect-flash'),
     passport = require('passport');
     
 
-module.exports = function(){
+module.exports = function(db){
     
     var app = express();
+    var server = http.createServer(app);
+    var io = socketio.listen(server);
+    
     if (process.env.NODE_ENV === 'development'){
         app.use(morgan('dev'));
     } else {
@@ -27,12 +33,16 @@ module.exports = function(){
     app.use(bodyParser.json());
     app.use(methodOverride());
     
-    
+    // for socket.io
+    var mongoStore = new MongoStore({
+        mongooseConnection: db.connection
+    });
     
     app.use(session({
         saveUninitialized : true,
         resave : true,
-        secret : config.sessionSecret // see./config tree
+        secret : config.sessionSecret, // see./config tree
+        store : mongoStore // for socket.io connection between express and socket.io
     }));
 
     app.set('views', './app/views');
@@ -53,6 +63,11 @@ module.exports = function(){
     
     app.use(express.static('./public'));  // below routes so we look here after exhausting the routes
     
-    return app;
+    // without socket.io
+    //return app;
+    
+    // for socket.io
+    require('./socketio')(server, io, mongoStore);
+    return server;
 }; 
     

@@ -6,7 +6,7 @@ var mongoose = require('./config/mongoose'), // load mongoose first
     passport = require('./config/passport');
 
 var db = mongoose();
-var app = express();
+var app = express(db); // pass db to express for mongoStore
 var passport = passport();
 
 app.listen(process.env.PORT);

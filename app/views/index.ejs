@@ -13,8 +13,8 @@
     
         
         <!-- not used when using ngRoute service -->
-        <!--  <section ng-include="'example/views/example.client.view.html'"></section> <!-- static page; see express.js -->
-        
+        <!--  <section ng-include="'example/views/example.client.view.html'"></section>  static page; see express.js -->
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="/lib/angular/angular.js"></script>
         <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
         <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
@@ -30,6 +30,12 @@
         
         <script type="text/javascript" src="/users/module/users.client.module.js"></script>
         <script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
+        <script type="text/javascript" src="/chat/chat.client.module.js"></script>
+        <script type="text/javascript" src="/chat/services/chat.client.service.js"></script>
+        <script type="text/javascript" src="/chat/controllers/chat.client.controller.js"></script>
+        <script type="text/javascript" src="/chat/config/chat.client.routes.js"></script>
+
+
         
         <script type="text/javascript" src="/application.js"></script> <!-- then DI new module into main application -->
                 
