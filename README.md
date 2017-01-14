@@ -93,7 +93,7 @@ var providerUserProfile = {
             providerData : providerData
         };
         
-profile.email = profile.emails ? profile.emails[0].value : "example@localhost.com";
+providerUserProfile.email = profile.emails ? profile.emails[0].value : "example@localhost.com";
 ```
 Ok, it's an ugly hack but I just wanted to get on with the code.  Any and all suggestions to get the email thing working will be appreciated.
 
