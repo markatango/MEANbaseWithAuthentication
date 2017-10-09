@@ -60,7 +60,6 @@ exports.articleById = function(req, res, next, id){
     });
 };
 
-
 exports.update = function(req, res){
     console.log("articles.server.controller: update");
     console.log("update req: " + req);  
