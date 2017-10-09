@@ -1,9 +1,10 @@
 {
-    "name" : "mean",
-    "version" : "0.0.7",
-    "dependencies" : {
-        "angular" : "~1.2",
-        "angular-route" : "~1.2",
-        "angular-resource" : "~1.2"
-    }
+  "name": "mean",
+  "version": "0.0.7",
+  "dependencies": {
+    "angular": "~1.2",
+    "angular-route": "~1.2",
+    "angular-resource": "~1.2",
+    "angular-bootstrap": "^2.5.0"
+  }
 }
