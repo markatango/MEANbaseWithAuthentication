@@ -1,5 +1,5 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-process.env.PORT = process.env.PORT || 4200;
+process.env.PORT = process.env.PORT || 3000;
 
 var mongoose = require('./config/mongoose'), // load mongoose first
     express = require('./config/express'),
